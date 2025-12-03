@@ -1,6 +1,6 @@
-package com.opniscience.interview.api;
+package com.opniscience.interview.orders.api;
 
-import com.opniscience.interview.api.dto.OrderDto;
+import com.opniscience.interview.orders.api.dto.OrderDto;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

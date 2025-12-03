@@ -1,4 +1,4 @@
-package com.opniscience.interview.api.dto;
+package com.opniscience.interview.orders.api.dto;
 
 import java.math.BigDecimal;
 

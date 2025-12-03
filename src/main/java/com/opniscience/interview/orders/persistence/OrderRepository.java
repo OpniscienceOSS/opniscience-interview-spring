@@ -1,6 +1,6 @@
-package com.opniscience.interview.persistence;
+package com.opniscience.interview.orders.persistence;
 
-import com.opniscience.interview.domain.Order;
+import com.opniscience.interview.orders.domain.Order;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

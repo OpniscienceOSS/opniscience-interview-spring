@@ -1,7 +1,7 @@
-package com.opniscience.interview.service;
+package com.opniscience.interview.orders.service;
 
-import com.opniscience.interview.api.dto.OrderDto;
-import com.opniscience.interview.persistence.OrderRepository;
+import com.opniscience.interview.orders.api.dto.OrderDto;
+import com.opniscience.interview.orders.persistence.OrderRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

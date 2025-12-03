@@ -1,4 +1,4 @@
-package com.opniscience.interview.domain;
+package com.opniscience.interview.orders.domain;
 
 import jakarta.persistence.*;
 
