@@ -13,7 +13,7 @@ public class DocumentEntity {
   private UUID id;
 
   @Column(nullable = false, unique = true, updatable = false)
-  private String externalId; // Public immutable ID
+  private String externalId;
 
   @Column(nullable = false)
   private String filename;
@@ -28,10 +28,10 @@ public class DocumentEntity {
   private Integer version;
 
   @Column(nullable = false)
-  private String s3Bucket;
+  private String bucketName;
 
   @Column(nullable = false)
-  private String s3Key;
+  private String objectPath;
 
   @Column(nullable = false)
   private UUID ownerUserId;
@@ -48,11 +48,22 @@ public class DocumentEntity {
       String contentType,
       long sizeBytes,
       Integer version,
-      String s3Bucket,
-      String s3Key,
+      String bucketName,
+      String objectPath,
       UUID ownerUserId
   ) {
-    throw new UnsupportedOperationException("TODO");
+    DocumentEntity entity = new DocumentEntity();
+    entity.externalId = externalId;
+    entity.filename = filename;
+    entity.contentType = contentType;
+    entity.sizeBytes = sizeBytes;
+    entity.version = version;
+    entity.bucketName = bucketName;
+    entity.objectPath = objectPath;
+    entity.ownerUserId = ownerUserId;
+    entity.createdAt = Instant.now();
+    entity.updatedAt = entity.createdAt;
+    return entity;
   }
 
   public UUID getId() {
@@ -79,12 +90,12 @@ public class DocumentEntity {
     return this.version;
   }
 
-  public String getS3Bucket() {
-    return this.s3Bucket;
+  public String getBucketName() {
+    return this.bucketName;
   }
 
-  public String getS3Key() {
-    return this.s3Key;
+  public String getObjectPath() {
+    return this.objectPath;
   }
 
   public UUID getOwnerUserId() {
