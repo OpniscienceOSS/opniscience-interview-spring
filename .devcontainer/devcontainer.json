@@ -10,7 +10,8 @@
 		"ghcr.io/devcontainers/features/git:1": {
 			"version": "latest",
 			"ppa": "false"
-		}
+		},
+		"ghcr.io/devcontainers/features/git-lfs:1": {}
 	},
 	"customizations": {
 		"vscode": {
