@@ -13,7 +13,7 @@ public class DocumentEntity {
   private UUID id;
 
   @Column(nullable = false, unique = true, updatable = false)
-  private String externalId; // Public immutable ID
+  private String externalId;
 
   @Column(nullable = false)
   private String filename;
@@ -113,10 +113,6 @@ public class DocumentEntity {
 
   public Instant getUpdatedAt() {
     return this.updatedAt;
-  }
-
-  public void setSize(long sizeBytes) {
-    this.sizeBytes = sizeBytes;
   }
 
   public void setContentType(String contentType) {
