@@ -25,34 +25,50 @@ public class DocumentEntity {
   private long sizeBytes;
 
   @Column(nullable = false)
-  private Integer version;
+  private int version;
 
   @Column(nullable = false)
-  private String s3Bucket;
+  private String objectBucket;
 
   @Column(nullable = false)
-  private String s3Key;
+  private String objectKey;
 
   @Column(nullable = false)
   private UUID ownerUserId;
 
-  @Column(nullable = false)
+  @Column(nullable = false, updatable = false)
   private Instant createdAt;
 
   @Column(nullable = false)
   private Instant updatedAt;
 
-  public static DocumentEntity create(
+  public static DocumentEntity build(
       String externalId,
       String filename,
       String contentType,
       long sizeBytes,
-      Integer version,
-      String s3Bucket,
-      String s3Key,
-      UUID ownerUserId
+      int version,
+      String objectBucket,
+      String objectKey,
+      UUID ownerUserId,
+      Instant createdAt
   ) {
-    throw new UnsupportedOperationException("TODO");
+    DocumentEntity entity = new DocumentEntity();
+    entity.externalId = externalId;
+    entity.filename = filename;
+    entity.contentType = contentType;
+    entity.sizeBytes = sizeBytes;
+    entity.version = version;
+    entity.objectBucket = objectBucket;
+    entity.objectKey = objectKey;
+    entity.ownerUserId = ownerUserId;
+
+    if (createdAt == null) {
+      createdAt = Instant.now();
+    }
+    entity.createdAt = createdAt;
+    entity.updatedAt = createdAt;
+    return entity;
   }
 
   public UUID getId() {
@@ -75,16 +91,16 @@ public class DocumentEntity {
     return this.sizeBytes;
   }
 
-  public Integer getVersion() {
+  public int getVersion() {
     return this.version;
   }
 
-  public String getS3Bucket() {
-    return this.s3Bucket;
+  public String getObjectBucket() {
+    return this.objectBucket;
   }
 
-  public String getS3Key() {
-    return this.s3Key;
+  public String getObjectKey() {
+    return this.objectKey;
   }
 
   public UUID getOwnerUserId() {
@@ -97,5 +113,33 @@ public class DocumentEntity {
 
   public Instant getUpdatedAt() {
     return this.updatedAt;
+  }
+
+  public void setSize(long sizeBytes) {
+    this.sizeBytes = sizeBytes;
+  }
+
+  public void setContentType(String contentType) {
+    this.contentType = contentType;
+  }
+
+  public void setSizeBytes(long sizeBytes) {
+    this.sizeBytes = sizeBytes;
+  }
+
+  public void setVersion(int version) {
+    this.version = version;
+  }
+
+  public void setObjectBucket(String objectBucket) {
+    this.objectBucket = objectBucket;
+  }
+
+  public void setObjectKey(String objectKey) {
+    this.objectKey = objectKey;
+  }
+
+  public void setUpdatedAt(Instant updatedAt) {
+    this.updatedAt = updatedAt;
   }
 }
