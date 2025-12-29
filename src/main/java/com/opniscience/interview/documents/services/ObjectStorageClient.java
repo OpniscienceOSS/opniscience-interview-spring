@@ -1,5 +1,7 @@
 package com.opniscience.interview.documents.services;
 
+import com.opniscience.interview.documents.exceptions.ObjectAlreadyExistsException;
+import com.opniscience.interview.documents.exceptions.ObjectNotFoundException;
 import org.springframework.stereotype.Service;
 
 public interface ObjectStorageClient {
@@ -41,18 +43,6 @@ public interface ObjectStorageClient {
    * @throws ObjectNotFoundException If no object is found in the bucket with the given key
    */
   void deleteObject(String bucket, String key) throws ObjectNotFoundException;
-
-  class ObjectAlreadyExistsException extends Exception {
-    public ObjectAlreadyExistsException(String message) {
-      super(message);
-    }
-  }
-
-  class ObjectNotFoundException extends Exception {
-    public ObjectNotFoundException(String message) {
-      super(message);
-    }
-  }
 
   /**
    * An empty implementation of the ObjectStorageClient interface to serve as the default for autowiring in the
