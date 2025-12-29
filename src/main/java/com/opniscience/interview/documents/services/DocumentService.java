@@ -1,11 +1,11 @@
 package com.opniscience.interview.documents.services;
 
+import com.opniscience.interview.documents.exceptions.DocumentNotFoundException;
 import com.opniscience.interview.documents.jpa.entities.DocumentEntity;
 import com.opniscience.interview.documents.jpa.repositories.DocumentRepository;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -24,8 +24,20 @@ public class DocumentService {
     this.bucketName = bucketName;
   }
 
+  /**
+   * Generate a unique ID for mapping object storage to database entries.
+   */
   private String createExternalId() {
     return UUID.randomUUID().toString();
+  }
+
+  /**
+   * Generate a unique key string for object storage in the form of a filepath for the given document and version.
+   * @param externalId the unique and immutable ID for the document
+   * @param version the version as a positive integer
+   */
+  private String createObjectKey(String externalId, int version) {
+    throw new UnsupportedOperationException("TODO");
   }
 
   /**
@@ -43,10 +55,12 @@ public class DocumentService {
   /**
    * Update an existing document (creates a new version).
    * <p>
-   * Increments the version and sets updatedAt and uploads the new content to object storage.
+   * Uploads the new content to object storage and updates the existing database entry, including incrementing the
+   * version and setting the updatedAt timestamp.
    * </p>
    */
-  public DocumentEntity updateDocument(String externalId, byte[] newContent, String newContentType) {
+  public DocumentEntity updateDocument(String externalId, byte[] newContent, String newContentType)
+      throws DocumentNotFoundException {
     throw new UnsupportedOperationException("TODO");
   }
 
@@ -56,21 +70,7 @@ public class DocumentService {
    * Deletes a document in the database in a soft-delete manner. May require a new database column.
    * </p>
    */
-  public void deleteDocument(String externalId) {
-    throw new UnsupportedOperationException("TODO");
-  }
-
-  /**
-   * List all documents for a given user.
-   */
-  public List<DocumentEntity> listUserDocuments(UUID userId) {
-    throw new UnsupportedOperationException("TODO");
-  }
-
-  /**
-   * Download the latest version of a document by external ID.
-   */
-  public byte[] downloadDocument(String externalId) {
+  public void deleteDocument(String externalId) throws DocumentNotFoundException {
     throw new UnsupportedOperationException("TODO");
   }
 }
