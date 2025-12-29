@@ -24,6 +24,10 @@ public class DocumentService {
     this.bucketName = bucketName;
   }
 
+  private String createExternalId() {
+    return UUID.randomUUID().toString();
+  }
+
   /**
    * Upload a brand new document.
    * <p>

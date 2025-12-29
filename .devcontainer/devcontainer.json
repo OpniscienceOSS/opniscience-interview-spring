@@ -1,0 +1,30 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/java
+{
+	"name": "Java",
+	"image": "mcr.microsoft.com/devcontainers/base:trixie",
+	"features": {
+		"ghcr.io/devcontainers/features/java:1": {
+			"version": "25.0.1-tem"
+		},
+		"ghcr.io/devcontainers/features/git:1": {
+			"version": "latest",
+			"ppa": "false"
+		},
+		"ghcr.io/devcontainers/features/git-lfs:1": {}
+	},
+	"customizations": {
+		"vscode": {
+			"settings": {
+				"chat.disableAIFeatures": true,
+				"workbench.secondarySideBar.defaultVisibility": "hidden"
+			},
+			"extensions": [
+				"vscjava.vscode-java-pack",
+				"-github.copilot",
+				"-github.copilot-chat"
+			]
+		}
+	},
+	"remoteUser": "vscode"
+}
