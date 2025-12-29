@@ -42,7 +42,7 @@ public class DocumentEntity {
   @Column(nullable = false)
   private Instant updatedAt;
 
-  public static DocumentEntity build(
+  public static DocumentEntity of(
       String externalId,
       String filename,
       String contentType,
